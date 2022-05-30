@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
+app.use(cors())
 var bodyParser = require('body-parser')
 const PORT = 3000
 require('./src/Models')
@@ -7,9 +9,6 @@ const UserRouter = require('./src/Routers/UserRouter')
 const CourseRouter = require('./src/Routers/CourseRouter')
 const CategoryRouter = require('./src/Routers/CategoryRouter')
 const AdminRouter = require('./src/Routers/AdminRouter')
-
-
-
 //Middlewares
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

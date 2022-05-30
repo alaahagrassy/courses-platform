@@ -6,10 +6,10 @@ const categoriesModel = db.Categories
 //add new course function
 addCourse = async (req, res) => {
     const { name, description, category } = req.body
+    const Image = req.file.path
     const NewCourse = await CourseModel.create({
         name, description, category
     })
-
     const categories = await categoriesModel.findOne({ where: { name: category } })
 
     if (!categories) {
