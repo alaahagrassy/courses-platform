@@ -1,8 +1,9 @@
+require('dotenv').config();
 require('mysql2')
 module.exports = {
     HOST : '127.0.0.1',
     USER:'root',
-    PASSWORD: 'password',
+    PASSWORD: process.env.Passworddatabase,
     DB:'coursesplateform',
     dialect :'mysql',
 
