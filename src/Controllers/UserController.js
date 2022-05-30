@@ -4,8 +4,7 @@ const CourseModel = db.Courses
 const junctionTable = db.enrolledcourse
 const jwt = require('jsonwebtoken')
 const { Op } = require('sequelize')
-
-
+require('dotenv').config();
 
 /// registration funstion
 register = async (req, res) => {
@@ -71,7 +70,7 @@ login = async (req, res) => {
     const active = JSON.stringify(user.active)
     const role = JSON.stringify(user.role)
     if (user) {
-        const token = jwt.sign({ Id, userName, Email, score, active, role }, 'secret')
+        const token = jwt.sign({ Id, userName, Email, score, active, role }, process.env.JWT_SECRET)
         user.validPassword(password).then(valid => {
             if (!valid) {
                 return res.status(400).json({
